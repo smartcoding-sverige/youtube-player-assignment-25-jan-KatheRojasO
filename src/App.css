@@ -1,3 +1,11 @@
-.App {
-  margin-top: 1rem;
+.app__page{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 7em;
+}
+
+.button{
+    position: relative;
+    margin: 2em 7em;
+    
 }
