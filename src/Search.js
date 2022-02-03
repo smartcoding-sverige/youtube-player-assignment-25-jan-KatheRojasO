@@ -1,15 +1,29 @@
 import React from 'react';
+import {useState} from 'react';
 import './Search.css';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
-function Search() {
+const Search = (props) =>{
+    const [input, setInput] = useState('');
+
+    const onInputChange = (event) => {
+        setInput(event.target.value);
+        props.onSearchTermChange(event.target.value);
+    }
+
+
   return (
   
     <nav>
-        <div className='navigationBar'>
+        
+    <div className='navigationBar'>
         <div className='search__bar'>
-            <SearchSharpIcon className="search__inputButton" />
-            <input placeholder='Search' type="text"/>
+          <SearchSharpIcon className='search__inputButton' />
+          <input 
+          type='text' 
+          placeholder='Search'
+          value ={input} onChange={onInputChange}
+          />
         </div>
 
         <div>
@@ -18,8 +32,8 @@ function Search() {
                 <li> <a href='#'>All videos</a></li>
             </ul>
         </div>  
+    
     </div>
-
     </nav>
     
     );
