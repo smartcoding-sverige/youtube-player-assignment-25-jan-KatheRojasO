@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
-import './Search.css';
+import '../stylesheets/search.css';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
 const Search = (props) =>{
@@ -11,25 +11,24 @@ const Search = (props) =>{
         props.onSearchTermChange(event.target.value);
     }
 
-
   return (
   
     <nav>
         
     <div className='navigationBar'>
         <div className='search__bar'>
-          <SearchSharpIcon className='search__inputButton' />
+          <SearchSharpIcon className='search__inputButton'/>
           <input 
-          type='text' 
-          placeholder='Search'
-          value ={input} onChange={onInputChange}
+            type='text' 
+            placeholder='Search'
+            value ={input} onChange={onInputChange}
           />
         </div>
 
         <div>
             <ul className='options'>
-                <li> <a href='#'>My favorites</a></li>
-                <li> <a href='#'>All videos</a></li>
+                <li> <button href='#'>My favorites</button></li>
+                <li> <button href='#'>All videos</button></li>
             </ul>
         </div>  
     
