@@ -1,0 +1,28 @@
+{
+  "name": "youtube-player-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx nodemon src/index.ts",
+    "migrate": "npx knex migrate:latest --knexfile src/knexfile.js",
+    "make-seed": "npx knex seed:make dev --knexfile src/knexfile.js",
+    "seed": "npx knex seed:run --knexfile src/knexfile.js",
+    "down": "npx knex migrate:down --knexfile src/knexfile.js "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "knex": "^1.0.3",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.21",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.6.0",
+    "tslib": "^2.3.1"
+  }
+}

@@ -3,7 +3,7 @@ import '../stylesheets/allVideos.css';
 import VideoListItem from './VideoListItem';
 
 
-function AllVideos(props) {
+function AllVideos(props: { videos: any[]; }) {
 
   return (
     <ul className='videoList'>

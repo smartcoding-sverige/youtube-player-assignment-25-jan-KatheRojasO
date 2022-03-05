@@ -1,3 +1,5 @@
+import React from "react";
+
 const ExampleComponent = () => {
     // hardcoded value of a youtube VideoID (this is just for illustration)
     // Take note of how the template literal is being used.

@@ -1,8 +1,8 @@
 import './App.css';
-import Header from '../src/components/Header';
-import Search from '../src/components/Search';
+import Header from './components/Header';
+import Search from './components/Search';
 import AllVideos from './components/AllVideos';
-import Buttons from '../src/components/Buttons';
+import Buttons from './components/Buttons';
 import React, { useEffect, useState } from 'react';
 import ExampleComponent from './components/ShowVideo';
 
@@ -19,7 +19,7 @@ function App() {
     setVideoIds(data);
   } 
 
-  const onSearchTermChange = (searchInput) => { 
+  const onSearchTermChange = (searchInput: string) => { 
     setVideoIds(videoIds.filter((videoObject) => {
       return Object.values(videoObject.id.name).join('').toLowerCase().includes(searchInput.toLowerCase())
     }))

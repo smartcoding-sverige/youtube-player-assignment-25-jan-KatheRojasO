@@ -3,10 +3,10 @@ import {useState} from 'react';
 import '../stylesheets/search.css';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
-const Search = (props) =>{
+const Search = (props: { onSearchTermChange: (arg0: any) => void; }) =>{
     const [input, setInput] = useState('');
 
-    const onInputChange = (event) => {
+    const onInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setInput(event.target.value);
         props.onSearchTermChange(event.target.value);
     }
@@ -27,8 +27,8 @@ const Search = (props) =>{
 
         <div>
             <ul className='options'>
-                <li> <button href='#'>My favorites</button></li>
-                <li> <button href='#'>All videos</button></li>
+                <li> <button ref='#'>My favorites</button></li>
+                <li> <button ref='#'>All videos</button></li>
             </ul>
         </div>  
     

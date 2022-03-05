@@ -2,7 +2,7 @@ import React from 'react'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function FavoriteFunction({favorite, changeToFavorite}) {
+function FavoriteFunction({favorite}: {favorite: any}, {changeToFavorite}: {changeToFavorite: any}) {
 
   return (
     <div>
