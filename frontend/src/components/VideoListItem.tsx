@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from 'react';
 import FavoriteFunction from "./FavoriteFunction";
 
-function VideoListItem(props: { name: any; videoId: any; }){
+function VideoListItem(props: { name: string; videoId: string; }){
     const video = props.name;
     const videoId = props.videoId;
 
@@ -10,8 +10,8 @@ function VideoListItem(props: { name: any; videoId: any; }){
 
     const readFavorite = () => {
         
-        // eslint-disable-next-line no-new-wrappers
-        var localStorageState = new Boolean (localStorage.getItem(videoId));
+        
+        var localStorageState = (localStorage.getItem(videoId) === "true");
         
         if (localStorageState == null){
             localStorageState = false;

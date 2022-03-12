@@ -1,9 +1,9 @@
 import React from 'react';
-import '../stylesheets/allVideos.css';
+import '../stylesheets/videos.css';
 import VideoListItem from './VideoListItem';
 
 
-function AllVideos(props: { videos: any[]; }) {
+function Videos(props: { videos: any[]; }) {
 
   return (
     <ul className='videoList'>
@@ -19,4 +19,4 @@ function AllVideos(props: { videos: any[]; }) {
   )
 }
 
-export default AllVideos;
+export default Videos;

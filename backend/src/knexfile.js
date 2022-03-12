@@ -13,7 +13,7 @@ module.exports = {
     connection: {
       database: 'youtube-assignment',
       user:'postgres',
-      password: 'admin',
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,

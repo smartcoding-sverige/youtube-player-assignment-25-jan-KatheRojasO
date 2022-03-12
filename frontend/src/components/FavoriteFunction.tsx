@@ -2,19 +2,19 @@ import React from 'react'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function FavoriteFunction({favorite}: {favorite: any}, {changeToFavorite}: {changeToFavorite: any}) {
+function FavoriteFunction(props: {favorite: Boolean, changeToFavorite: () => void}) {
 
   return (
     <div>
 
-      {favorite ? (
+      {props.favorite ? (
         <FavoriteIcon
-        onClick={() => changeToFavorite()}
+        onClick={() => props.changeToFavorite()}
         
         />
       ) : (
         <FavoriteBorderIcon
-        onClick={() => changeToFavorite()}
+        onClick={() => props.changeToFavorite()}
         />
       )}
       

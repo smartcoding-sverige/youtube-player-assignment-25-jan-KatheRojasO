@@ -3,12 +3,33 @@ import {useState} from 'react';
 import '../stylesheets/search.css';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
-const Search = (props: { onSearchTermChange: (arg0: any) => void; }) =>{
+const Search = (props: { setDisplayVideos: (arg0: any) => void, videoIds: any[] }) =>{
     const [input, setInput] = useState('');
 
     const onInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setInput(event.target.value);
-        props.onSearchTermChange(event.target.value);
+
+        props.setDisplayVideos(props.videoIds.filter((videoObject) => {
+          return Object.values(videoObject.id.name).join('').toLowerCase().includes(input.toLowerCase())
+        }))
+    }
+
+    const onClickAllVideos = () => {
+      props.setDisplayVideos(props.videoIds)
+    }
+
+    const favoriteVideoIdList = () => {
+      const keys = Object.keys(localStorage);
+      return keys.filter((key) =>{
+        return localStorage.getItem(key) === "true"
+      })
+    }
+
+    const videoObjectList = () => { 
+      const favoriteVideoList = favoriteVideoIdList();
+      props.setDisplayVideos(
+        props.videoIds.filter(video => favoriteVideoList.includes(video.id.videoId))
+      );
     }
 
   return (
@@ -27,8 +48,8 @@ const Search = (props: { onSearchTermChange: (arg0: any) => void; }) =>{
 
         <div>
             <ul className='options'>
-                <li> <button ref='#'>My favorites</button></li>
-                <li> <button ref='#'>All videos</button></li>
+                <li> <button onClick={videoObjectList}>My favorites</button></li>
+                <li> <button onClick={onClickAllVideos}>All videos</button></li>
             </ul>
         </div>  
     
