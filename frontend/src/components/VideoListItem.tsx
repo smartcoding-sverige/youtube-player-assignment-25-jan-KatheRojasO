@@ -34,7 +34,7 @@ function VideoListItem(props: { name: string; videoId: string; }){
     return (
 
             <li>
-                <a href={`https://www.youtube.com/watch?v=${videoId}`}> {video}</a>
+                {video}
                 <FavoriteFunction favorite={favorite} changeToFavorite={changeToFavorite}/>
                 
             </li>

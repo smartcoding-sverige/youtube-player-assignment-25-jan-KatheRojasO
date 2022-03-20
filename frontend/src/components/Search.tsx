@@ -3,19 +3,20 @@ import {useState} from 'react';
 import '../stylesheets/search.css';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 
-const Search = (props: { setDisplayVideos: (arg0: any) => void, videoIds: any[] }) =>{
+const Search = (props: { setDisplayVideos: (arg0: any) => void, setVideoIndex: (arg0: number) => void, videoIds: any[] }) =>{
     const [input, setInput] = useState('');
 
     const onInputChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
         setInput(event.target.value);
-
         props.setDisplayVideos(props.videoIds.filter((videoObject) => {
           return Object.values(videoObject.id.name).join('').toLowerCase().includes(input.toLowerCase())
         }))
+        props.setVideoIndex(0);
     }
 
     const onClickAllVideos = () => {
       props.setDisplayVideos(props.videoIds)
+      props.setVideoIndex(0);
     }
 
     const favoriteVideoIdList = () => {
@@ -30,6 +31,7 @@ const Search = (props: { setDisplayVideos: (arg0: any) => void, videoIds: any[] 
       props.setDisplayVideos(
         props.videoIds.filter(video => favoriteVideoList.includes(video.id.videoId))
       );
+      props.setVideoIndex(0);
     }
 
   return (

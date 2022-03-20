@@ -4,7 +4,8 @@ import Search from './components/Search';
 import Videos from './components/Videos';
 import Buttons from './components/Buttons';
 import React, { useEffect, useState } from 'react';
-import ExampleComponent from './components/ShowVideo';
+import ShowVideo from './components/ShowVideo';
+
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
   }
 
   const [displayVideos, setDisplayVideos] = useState<any[]>([]);
+  const [videoIndex, setVideoIndex]  = useState<number>(0);
 
-
+  
   // NOTES: A component can have more than one useEffect hook
   useEffect(() => {
     getVideos();
@@ -31,17 +33,18 @@ function App() {
     <div className="App">
 
       <Header />
-      <Search setDisplayVideos={setDisplayVideos} videoIds={videoIds} />
+      <Search setDisplayVideos={setDisplayVideos} setVideoIndex={setVideoIndex} videoIds={videoIds} />
 
 
       <div className='app__page'>
-        <ExampleComponent />
+        
+        <ShowVideo video={displayVideos[videoIndex]} />
         <Videos videos={displayVideos} />
         
       </div>
 
       <div className='button'>
-        <Buttons />
+        <Buttons setVideoIndex={setVideoIndex} videoIndex={videoIndex} videoListSize={displayVideos.length}/>
       </div>
 
     </div>
