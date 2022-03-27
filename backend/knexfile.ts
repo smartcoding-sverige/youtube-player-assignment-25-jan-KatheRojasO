@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-//require('dotenv').config();
+require('dotenv').config();
 
 const { knexSnakeCaseMappers } = require ('objection');
 /**
@@ -20,10 +20,12 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: './src/migrations'
     },
+    
     seeds: {
-      directory: './seeds'
+      directory: './src/seeds'
     },
     ...knexSnakeCaseMappers
   },

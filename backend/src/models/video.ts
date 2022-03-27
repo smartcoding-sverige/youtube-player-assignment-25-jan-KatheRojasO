@@ -1,21 +1,26 @@
-const { Model } = require('objection');
-const  Id = require('./id');
+import { Model } from 'objection';
+import User from './user';
 
 class Video extends Model {
+
+    videoId!: String;
+    name!: String;
+    
+
     static get tableName(){
         return 'video';
     }
 
     static relationMappings = {
-        id: {
+        owner: {
           relation: Model.BelongsToOneRelation,
-          modelClass: Id,
+          modelClass: User,
           join: {
             from: 'video.videoId',
-            to: 'id.videoId'
-          }
+            to: 'user.id'
+            }
         }
-      };
+    }
 }
 
 module.exports = Video;
