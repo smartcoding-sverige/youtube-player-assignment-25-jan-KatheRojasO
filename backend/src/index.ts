@@ -42,6 +42,25 @@ app.get('/videos', async (req, res, next) =>{
     
 })
 
+app.post('/videos', async (req, res, next) =>{
+    try {
+        for (let i=0; i < req.body.length; i++){
+            const name = req.body[i].name;
+            const videoId = req.body[i].videoId;
+            const videoSaver = await Video.query()
+                .insert({
+                    'videoId': videoId,
+                    'name': name   
+            })
+            res.end();
+        }
+    } catch (err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+})
+
+
 app.get('/favorites/:userId', async (req, res, next) =>{
     try {
         const { userId } = req.params;

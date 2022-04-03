@@ -7,6 +7,7 @@ import Youtube from './pages/Youtube';
 
 
 
+
 function App() {
   
       
@@ -18,8 +19,8 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Youtube />}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/" element={<Youtube />}/>
       </Routes>
     </BrowserRouter>   
 

@@ -5,11 +5,13 @@ import VideoListItem from './VideoListItem';
 
 function Videos(props: { videos: any[]; }) {
 
+  console.log(props.videos)
+
   return (
     <ul className='videoList'>
       {props.videos.map((video) => {
         return (
-          <VideoListItem name={video.id.name} videoId={video.id.videoId} />
+          <VideoListItem name={video.name} videoId={video.videoId} />
         )
       })
       }

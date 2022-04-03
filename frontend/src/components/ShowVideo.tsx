@@ -7,7 +7,7 @@ const ShowVideo = (props: { video:any; }) => {
         return <div className="showVideo"></div>
     }
     
-    const videoId = props.video.id.videoId;
+    const videoId = props.video.videoId;
 
     return <iframe 
         width="500" height="300" 

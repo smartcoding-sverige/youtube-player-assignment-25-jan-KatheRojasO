@@ -3,6 +3,7 @@ import User from './user';
 
 class Video extends Model {
 
+    id!: number;
     videoId!: String;
     name!: String;
     
@@ -10,6 +11,10 @@ class Video extends Model {
     static get tableName(){
         return 'video';
     }
+
+    static get idColumn() {
+        return 'videoId';
+      }
 
     static relationMappings = {
         owner: {

@@ -5,16 +5,18 @@ import Videos from '../components/Videos';
 import Buttons from '../components/Buttons';
 import ShowVideo from '../components/ShowVideo';
 
+
 function Youtube() {
   //get videos
   const [videoIds, setVideoIds] = useState<any[]>([]);
   
   const getVideos = async () => {
-    const response = await fetch('http://localhost:3001/videos');
+    const response = await fetch('http://localhost:8080/videos');
     const data = await response.json();
     setVideoIds(data);
+    console.log(data);
   }
-
+ 
   const [displayVideos, setDisplayVideos] = useState<any[]>([]);
   const [videoIndex, setVideoIndex]  = useState<number>(0);
 
@@ -23,6 +25,7 @@ function Youtube() {
   useEffect(() => {
     getVideos();
   }, []);
+
 
   return ( 
     <div className="App">
