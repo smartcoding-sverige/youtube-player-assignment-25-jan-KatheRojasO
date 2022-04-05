@@ -9,16 +9,19 @@ function Login() {
   const [login, setLogin] = useState({ user: '', password: '' });
   const navigate = useNavigate();
 
+
   const loginHandler = async (event: MouseEvent) => {
     event.preventDefault();
     try {
       const response = await fetch('http://localhost:8080/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(login)
+        body: JSON.stringify(login),
       });
 
       if (response.status === 200) {
+        const token = await response.json();
+        sessionStorage.setItem('token', token);
         navigate('/');
       }
     } catch (err) {

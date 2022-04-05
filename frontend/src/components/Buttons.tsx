@@ -26,8 +26,8 @@ function Buttons (props: {setVideoIndex: (arg0: number) => void, videoIndex:numb
 
   return (
     <div>
-      <button className={'btn1'} onClick={buttonPrevious}> Previous </button>
-      <button className={'btn2'} onClick={buttonNext}> Next </button>
+      <button className='btn1' onClick={buttonPrevious}> Previous </button>
+      <button className='btn2' onClick={buttonNext}> Next </button>
     </div>
   )
     

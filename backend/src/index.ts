@@ -5,6 +5,9 @@ const dbSetup = require('./db-setup');
 const Video = require ('./models/video');
 const User = require ('./models/user');
 const Favorite = require ('./models/favorite');
+const jwt = require ('jsonwebtoken');
+
+
 
 dbSetup();
 
@@ -88,7 +91,8 @@ app.post('/login', async (req, res, next) =>{
             })
 
         if (login.length != 0){
-            res.status(200);
+            const accessToken=jwt.sign({username:user}, 'secret');
+            res.status(200).json(accessToken);
         } else{
             res.status(401);
         }
