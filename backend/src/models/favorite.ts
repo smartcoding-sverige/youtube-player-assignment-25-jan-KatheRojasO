@@ -9,6 +9,10 @@ class Favorite extends Model {
     static get tableName(){
         return 'favorite';
     }
+
+    static get idColumn() {
+        return 'favoriteId';
+      }
 }
 
 module.exports = Favorite;

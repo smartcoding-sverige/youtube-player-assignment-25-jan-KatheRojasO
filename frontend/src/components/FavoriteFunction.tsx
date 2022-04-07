@@ -13,7 +13,7 @@ function FavoriteFunction(props: {favorite: Boolean, changeToFavorite: () => voi
         
         />
       ) : (
-        <FavoriteBorderIcon
+        <FavoriteBorderIcon 
         onClick={() => props.changeToFavorite()}
         />
       )}

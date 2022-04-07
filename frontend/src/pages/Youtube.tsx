@@ -14,7 +14,6 @@ function Youtube() {
     const response = await fetch('http://localhost:8080/videos');
     const data = await response.json();
     setVideoIds(data);
-    console.log(data);
   }
  
   const [displayVideos, setDisplayVideos] = useState<any[]>([]);

@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../stylesheets/search.css";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
+import { JwtPayload } from "jwt-decode";
 
 const Search = (props: {  setDisplayVideos: (arg0: any) => void;  setVideoIndex: (arg0: number) => void;  videoIds: any[];}) => {
 
@@ -44,7 +45,6 @@ const Search = (props: {  setDisplayVideos: (arg0: any) => void;  setVideoIndex:
     }
 
     props.setVideoIndex(0);
-    console.log(search);
   };
 
   const videoSaver = async (videos:any[]) => {
@@ -65,17 +65,25 @@ const Search = (props: {  setDisplayVideos: (arg0: any) => void;  setVideoIndex:
   };
 
 
-  const favoriteVideoIdList = () => {
-    const keys = Object.keys(localStorage);
-    return keys.filter((key) =>{
-      return localStorage.getItem(key) === "true"
-    })
+  const favoriteVideoIdList = async () => {
+    const response = await fetch('http://localhost:8080/favorites/1');
+    const data = await response.json();
+    return data;
+
   }
 
-  const videoObjectList = () => {
-      const favoriteVideoList = favoriteVideoIdList();
-      props.setDisplayVideos(props.videoIds.filter(video => favoriteVideoList.includes(video.id.videoId)));
-      props.setVideoIndex(0);
+  const videoObjectList = async () => {
+
+      if(sessionStorage.getItem('token') != null){
+        
+        const favoriteVideoList = await favoriteVideoIdList();
+        const favoriteVideoIds = favoriteVideoList.map((object: { video_id: string; }) => object.video_id)
+        props.setDisplayVideos(props.videoIds.filter(video => favoriteVideoIds.includes(video.videoId)));
+        props.setVideoIndex(0);
+      } else {
+        props.setDisplayVideos([])
+        props.setVideoIndex(0)
+      }
   };
   
 

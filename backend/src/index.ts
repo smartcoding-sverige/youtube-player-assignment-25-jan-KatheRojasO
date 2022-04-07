@@ -54,7 +54,7 @@ app.post('/videos', async (req, res, next) =>{
                 .insert({
                     'videoId': videoId,
                     'name': name   
-            })
+                })
             res.end();
         }
     } catch (err){
@@ -77,6 +77,75 @@ app.get('/favorites/:userId', async (req, res, next) =>{
         res.status(500).json(err);
     }
     
+})
+
+app.post('/favorites/add', async (req, res, next) => {
+    
+    try {
+        const user = req.body.user;
+        const videoId = req.body.videoId;
+        const selectedUser = await User.query()
+            .select('id')
+            .where('user', user)
+        const userId = selectedUser[0].id
+        const favorites = await Favorite.query()
+            .insert({
+                'user_id': userId,
+                'video_id': videoId
+            })
+        res.end();
+    } catch (err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+})
+
+app.post('/favorites', async (req, res, next) => {
+    
+    try {
+        const user = req.body.user;
+        const videoId = req.body.videoId;
+        const selectedUser = await User.query()
+            .select('id')
+            .where('user', user)
+        const userId = selectedUser[0].id
+        const selectedFavorite = await Favorite.query()
+            .select('favoriteId')
+            .where('user_id', userId)
+            .where('video_id', videoId)
+
+        if (selectedFavorite.length != 0){
+            res.status(200);
+        } else{
+            res.status(204);
+        }
+        res.end();
+
+    } catch (err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+})
+
+app.delete('/favorites', async (req, res, next) => {
+    try{
+        const user = req.body.user;
+        const videoId = req.body.videoId;
+        const selectedUser = await User.query()
+            .select('id')
+            .where('user', user)
+        const userId = selectedUser[0].id        
+
+        const unfavorite = await Favorite.query()
+            .delete()
+            .where('user_id', userId)
+            .where('video_id', videoId)
+
+    }catch (err){
+        console.error(err);
+        res.status(500).json(err);
+    }
+
 })
 
 app.post('/login', async (req, res, next) =>{
