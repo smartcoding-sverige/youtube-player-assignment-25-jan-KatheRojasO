@@ -1,0 +1,13 @@
+.app__page{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 7em;
+    position: static;
+}
+
+.button{
+    position: static;
+    margin: 2em 7em;
+    
+}
+

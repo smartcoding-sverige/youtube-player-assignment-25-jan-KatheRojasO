@@ -1,0 +1,48 @@
+.navigationBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+.options li {
+    list-style-type: none;
+    display: inline;
+    margin-right: 10em;
+}
+
+.options button {
+    background-color:white;
+    border: none;
+    font-size: 15px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 4px;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.search__bar {
+    display: flex;
+    align-items: center;
+    width: 20%;
+    border: 1px solid lightgrey;
+    margin-left: 5em;
+}
+
+.search__bar > input{
+    flex: 1;
+    border: none;
+}
+
+.search__inputButton {
+    width: 50px;
+    background-color: #fafafa;
+    border-right: 1px solid lightgray;
+    color:gray;
+}
