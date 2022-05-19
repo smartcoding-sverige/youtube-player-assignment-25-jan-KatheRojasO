@@ -6,9 +6,15 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
+  //login object that contains user and password. By default user and password are empty.
   const [login, setLogin] = useState({ user: '', password: '' });
+
   const navigate = useNavigate();
 
+
+  /*This function connects the backend with the frontend through a mouse event. The user information is already in the
+  database so once the user tries to login, the app will go to the DB and if the response is 200 it will allow the user
+  to login, will give him a token to use during the session and will redirected him to the main page.*/
 
   const loginHandler = async (event: MouseEvent) => {
     event.preventDefault();
@@ -29,6 +35,9 @@ function Login() {
     };
   }
 
+  /* The username and password form controls are setting user and password on change. Login is deconstructing and then
+  it sets username or password.
+  Button is doing loginHandler on click*/
 
   return (
     <Container fluid style={{ objectFit: 'fill' }}>

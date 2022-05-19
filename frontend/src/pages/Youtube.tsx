@@ -7,7 +7,7 @@ import ShowVideo from '../components/ShowVideo';
 
 
 function Youtube() {
-  //get videos
+  //get videos from our API
   const [videoIds, setVideoIds] = useState<any[]>([]);
   
   const getVideos = async () => {
@@ -15,20 +15,32 @@ function Youtube() {
     const data = await response.json();
     setVideoIds(data);
   }
- 
+
+  // This shows the videos that I choose in the video component
   const [displayVideos, setDisplayVideos] = useState<any[]>([]);
+
+  // This tell me which video to show, in this case, it always shows the first index (video)  
   const [videoIndex, setVideoIndex]  = useState<number>(0);
 
   
-  // NOTES: A component can have more than one useEffect hook
+  //this hook will render our function everytime the DOM updates
   useEffect(() => {
     getVideos();
   }, []);
 
+  /*Component Search: In search we're passing setDisplayVideos, setVideoIndex that will do something in search component
+   and later they will set up the values in search. VideoIds has already an array of videos from our API.
+   
+   Component ShowVideo: we're passing displayVideos and also we're passing videoIndex to displayVideos. With this we
+   assure that it will always show the first index (video) 
+   
+   Component Videos: we're passing displayVideos and it will show the video list*/
+
+
 
   return ( 
     <div className="App">
-
+      
       <Header />
       <Search setDisplayVideos={setDisplayVideos} setVideoIndex={setVideoIndex} videoIds={videoIds} />
 

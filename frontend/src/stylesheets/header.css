@@ -13,3 +13,14 @@
     height: 25px;
 }
 
+.login button{
+    background-color:white;
+    border: none;
+    font-size: 15px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 4px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
